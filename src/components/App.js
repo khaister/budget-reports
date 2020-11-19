@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import moment from "moment";
 import get from "lodash/fp/get";
 import keyBy from "lodash/fp/keyBy";
 import {
   getBudgets,
+  getDefaultBudget,
   getUpdatedBudget,
   AUTHORIZE_URL,
   setLastLocation
@@ -29,17 +30,19 @@ class App extends Component {
     budgetsLoaded: false,
     budgetIds: [],
     budgets: {},
+    defaultBudget: getDefaultBudget(),
     budgetDetails: {},
     currentMonth: moment().format("YYYY-MM")
   };
 
   handleRequestBudgets = callback => {
-    getBudgets().then(({ budgets }) => {
+    getBudgets().then(({ budgets, default_budget }) => {
       this.setState(
         {
           budgetsLoaded: true,
           budgetIds: budgets.map(b => b.id),
-          budgets: keyBy("id")(budgets)
+          budgets: keyBy("id")(budgets),
+          defaultBudget: default_budget
         },
         callback
       );
@@ -71,6 +74,7 @@ class App extends Component {
       budgetsLoaded,
       budgetIds,
       budgets,
+      defaultBudget,
       budgetDetails,
       currentMonth
     } = this.state;
@@ -84,6 +88,15 @@ class App extends Component {
         <Switch>
           <Route
             path="/"
+            exact
+            render={() => (
+              defaultBudget && defaultBudget.id
+                ? (<Redirect to={`/budgets/${defaultBudget.id}/current`} />)
+                : (<Redirect to={`/budgets`} />)
+            )}
+          />
+          <Route
+            path="/budgets"
             exact
             render={() => (
               <Budgets
@@ -104,7 +117,6 @@ class App extends Component {
                   authorized={authorized}
                   budgetId={budgetId}
                   budgetLoaded={!!budget}
-                  hasMultipleBudgets={budgetIds.length > 1}
                   location={location.pathname}
                   onAuthorize={this.handleAuthorize}
                   onRequestBudget={this.handleRequestBudget}

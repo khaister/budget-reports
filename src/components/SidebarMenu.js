@@ -9,7 +9,6 @@ class SidebarMenu extends Component {
   static propTypes = {
     budgetId: PropTypes.string.isRequired,
     children: PropTypes.func.isRequired,
-    hasMultipleBudgets: PropTypes.bool.isRequired,
     location: PropTypes.string.isRequired
   };
 
@@ -28,7 +27,7 @@ class SidebarMenu extends Component {
   };
 
   render() {
-    const { budgetId, children, hasMultipleBudgets, location } = this.props;
+    const { budgetId, children, location } = this.props;
     const { open } = this.state;
 
     return (
@@ -36,7 +35,6 @@ class SidebarMenu extends Component {
         sidebar={
           <SidebarMenuContent
             budgetId={budgetId}
-            hasMultipleBudgets={hasMultipleBudgets}
             location={location}
             onCloseSidebar={this.handleCloseSidebar}
           />

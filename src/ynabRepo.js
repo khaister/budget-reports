@@ -147,6 +147,11 @@ export const getUpdatedBudget = id => {
     });
 };
 
+export const getDefaultBudget = () => {
+  const data = getStorage(BUDGETS_STORAGE_KEY);
+  return data && data.default_budget;
+}
+
 export const setLastLocation = () => {
   localStorage.setItem(LAST_LOCATION_KEY, window.location.hash);
 };
