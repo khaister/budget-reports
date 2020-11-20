@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import moment from "moment";
-import { getSetting, setSetting } from "./uiRepo";
-import { getFirstMonth } from "./budgetUtils";
+
+import { getSetting, setSetting } from "./repos/uiRepo";
+import { getFirstMonth } from "./utils/budgetUtils";
 
 const MAX_MONTHS_TO_COMPARE = 12;
 

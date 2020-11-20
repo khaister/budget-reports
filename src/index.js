@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
-import { getAuthorizeToken, initializeYnabApi } from "./ynabRepo";
+import { getAuthorizeToken, initializeYnabApi } from "./repos/ynabRepo";
 import App from "./components/App";
 
 const token = getAuthorizeToken();

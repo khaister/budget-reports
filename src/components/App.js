@@ -4,21 +4,19 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import moment from "moment";
 import get from "lodash/fp/get";
 import keyBy from "lodash/fp/keyBy";
+
 import {
   getBudgets,
   getDefaultBudget,
   getUpdatedBudget,
   AUTHORIZE_URL,
   setLastLocation
-} from "../ynabRepo";
-import { setSetting, getSetting } from "../uiRepo";
-import PageWrapper from "./PageWrapper";
-import PageContent from "./PageContent";
-import Unauthorized from "./Unauthorized";
-import NotFound from "./NotFound";
-import ErrorBoundary from "./ErrorBoundary";
-import Budgets from "./Budgets";
-import CurrencyContext from "./CurrencyContext";
+} from "../repos/ynabRepo";
+import { setSetting, getSetting } from "../repos/uiRepo";
+import { PageWrapper, PageContent }  from "./page";
+import { NotFound, Unauthorized, ErrorBoundary } from "./error";
+import Budgets from "./budgets/Budgets";
+import CurrencyContext from "./common/CurrencyContext";
 
 class App extends Component {
   static propTypes = {
