@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Section, PrimaryButton } from "../common";
-import { PageTitle, StrongText, SecondaryText } from "../common/typeComponents";
+import { Section, PrimaryButton } from '../common';
+import { PageTitle, StrongText, SecondaryText } from '../common/typeComponents';
 
 const Unauthorized = ({ onAuthorize }) => (
   <Section>

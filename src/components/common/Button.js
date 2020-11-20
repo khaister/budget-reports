@@ -9,16 +9,20 @@ const Button = styled(SecondaryText)`
   border: 1px solid #ccc;
   padding: 4px 12px;
   border-radius: 2px;
+  cursor: pointer;
 
   & + & {
     margin-left: 5px;
   }
 `;
 
-export const PrimaryButton = styled(Button)`
+const PrimaryButton = styled(Button)`
   background-color: ${primaryColor};
   border-color: ${primaryColor};
   color: #fff;
 `;
 
-export default Button;
+export {
+  Button,
+  PrimaryButton
+};

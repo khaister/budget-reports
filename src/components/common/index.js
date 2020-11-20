@@ -1,8 +1,7 @@
 import Amount from './Amount';
 import AmountWithPercentage from './AmountWithPercentage';
 import Breakdown from './Breakdown';
-import Button from './Button';
-import PrimaryButton from './Button';
+import { Button, PrimaryButton } from './Button';
 import CollapsibleSection from './CollapsibleSection';
 import EmptyText from './EmptyText';
 import GenericEntitiesSection from './GenericEntitiesSection';
